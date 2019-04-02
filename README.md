@@ -9,7 +9,7 @@ Python 3.x
 `wget https://raw.githubusercontent.com/nicoprl/emails/master/emails.py`
 
 # Usage
-
+```
 usage: emails.py [-h] [-user USER] [-pwd PWD] [-smtp SMTP] [-port PORT]
                  [-to adr1;adr2 ...] [-subject SUBJECT] [-body BODY]
                  [-file NAME:PATH]
@@ -25,7 +25,7 @@ Send email. Add additionnal -file tags to send several attachments
   -subject SUBJECT   subject
   -body BODY         body
   -file NAME:PATH    attachment
-
+```
 # Exemple
 
 `emails.py -user "alice@domain.com" -pwd "123456" -smtp "smtp.gmail.com" -port 587 -to "bob@domain.com;john@domain.com" -subject "This is the title" -body "email body" -file "img1.jpeg:./cat.jpeg" -file "img2.jpeg:./snoopy.jpeg"`
