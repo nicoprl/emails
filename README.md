@@ -12,9 +12,9 @@ Python 3.x
 
 ## Usage
 ```
-usage: emails.py [-h] [-user USER] [-pwd PWD] [-smtp SMTP] [-port PORT]
-                 [-to adr1;adr2 ...] [-subject SUBJECT] [-body BODY]
-                 [-file NAME:PATH]
+usage: emails.py [-h] -user USER -pwd PWD -smtp SMTP -port PORT
+                 -to adr1;adr2 ... -subject SUBJECT -body BODY
+                 [-file PATH]
 
 Send email. Add additionnal -file tags to send several attachments
 
@@ -26,8 +26,8 @@ Send email. Add additionnal -file tags to send several attachments
   -to adr1;adr2 ...  recipient adresses
   -subject SUBJECT   subject
   -body BODY         body
-  -file NAME:PATH    attachment
+  -file PATH         attachment
 ```
 ## Exemple
 
-`emails.py -user "alice@domain.com" -pwd "123456" -smtp "smtp.gmail.com" -port 587 -to "bob@domain.com;john@domain.com" -subject "This is the title" -body "email body" -file "img1.jpeg:./cat.jpeg" -file "img2.jpeg:./snoopy.jpeg"`
+`emails.py -user "alice@domain.com" -pwd "123456" -smtp "smtp.gmail.com" -port 587 -to "bob@domain.com;john@domain.com" -subject "This is the title" -body "email body" -file "./cat.jpeg" -file "./snoopy.jpeg"`
