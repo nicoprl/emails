@@ -11,7 +11,11 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 def main():
-    parser = argparse.ArgumentParser(description='Send email. Add additionnal -file tags to send several attachments')
+    description = """
+    Send email(s). Add additionnal -file tags to send several attachments.
+    -user, -pwd, -smtp and -port flags are optionnal if --config CONFIG is provided
+    config file must be a json file containing: user, password, smtp, port"""
+    parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-user', required=False, help='username@domain.com')
     parser.add_argument('-pwd', required=False, help='password')
     parser.add_argument('-smtp', required=False, help='SMTP')
