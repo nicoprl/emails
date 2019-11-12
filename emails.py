@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import sys
+import base64
 import smtplib
 import json
 import argparse
@@ -43,15 +44,14 @@ def main():
     else:
         body = args.body
     
-    try:
-        for recipient in args.to.split(';'):
+    for recipient in args.to.split(';'):
+        try:
             sendEmail(user, pwd, smtp, port, recipient, args.subject, body, args.file)
-    except Exception as e:
-        print(e)
-        print()
-        sys.exit(1)
-    else:
-        print('email(s) sent')
+        except Exception as e:
+            print(e)
+            sys.exit(1)
+        else:
+            print("done.")
 
 def sendEmail(user, pwd, smtp, port, to, subject, text, attachment=[]):
     msg = MIMEMultipart()
