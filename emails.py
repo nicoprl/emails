@@ -76,6 +76,7 @@ def sendEmail(user, pwd, smtp, port, to, subject, text, attachment=[]):
     server = smtplib.SMTP(smtp, port)
     server.ehlo()
     server.starttls()
+    server.ehlo()
     server.login(user, pwd)
     txt = msg.as_string()
     server.sendmail(user, to, txt)
