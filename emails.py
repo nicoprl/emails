@@ -70,7 +70,7 @@ def sendEmail(user, pwd, smtp, port, to, subject, text, attachment=[]):
     msg["From"] = user
     msg["To"] = to
 
-    msg.attach(MIMEText(text, 'plain'))
+    msg.attach(MIMEText(text, 'html'))
 
     if attachment:
         for e in attachment:
@@ -89,8 +89,7 @@ def sendEmail(user, pwd, smtp, port, to, subject, text, attachment=[]):
     server.starttls()
     server.ehlo()
     server.login(user, pwd)
-    txt = msg.as_string()
-    server.sendmail(user, to, txt)
+    server.sendmail(user, to, msg.as_string())
     server.close()
 
 def get_auth_from_file(jsonFile):

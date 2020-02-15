@@ -1,2 +1,4 @@
 emails_config.json
+tus.py
+export.csv
 __pycache__/
