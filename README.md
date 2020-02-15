@@ -12,13 +12,13 @@ Python 3.x
 
 ## Usage
 ```
-usage: emails.py [-h] [-user USER] [-pwd PWD] [-smtp SMTP] [-port PORT] -to
-                 adr1;adr2 ... -subject SUBJECT [-body BODY] [--config CONFIG]
+usage: emails.py [-h] [-user USER] [-pwd PWD] [-smtp SMTP] [-port PORT]
+                 [-to adr1;adr2 ...] [-subject SUBJECT] [-body BODY] [-config]
                  [-file PATH]
 
 Send email(s). Add additionnal -file tags to send several attachments. -user,
--pwd, -smtp and -port flags are optionnal if --config CONFIG is provided
-config file must be a json file containing: user, password, smtp, port
+-pwd, -smtp and -port flags are optionnal if a config file exists. To create a
+config file, type emails.py -config
 
 optional arguments:
   -h, --help         show this help message and exit
@@ -29,14 +29,18 @@ optional arguments:
   -to adr1;adr2 ...  recipient adresses
   -subject SUBJECT   subject
   -body BODY         body
-  --config CONFIG    JSON config file containing auth infos
+  -config            create JSON config file containing auth infos
   -file PATH         attachment
 ```
 ## Exemples
 
-`emails.py -user "alice@domain.com" -pwd "123456" -smtp "smtp.gmail.com" -port 587 -to "bob@domain.com;john@domain.com" -subject "This is the title" -body "email body" -file "./cat.jpeg" -file "./snoopy.jpeg"`
+#### With config file
 
-`emails.py --config ./auth.json -to "bob@domain.com;john@domain.com" -subject "This is the title" -body "email body"`
+`emails.py -to "bob@domain.com;john@domain.com" -subject "This is the title" -body "email body"`
+
+#### Without config file
+
+`emails.py -user "alice@domain.com" -pwd "123456" -smtp "smtp.gmail.com" -port 587 -to "bob@domain.com;john@domain.com" -subject "This is the title" -body "email body" -file "./cat.jpeg" -file "./snoopy.jpeg"`
 
 ## Configuration file exemple
 ```json

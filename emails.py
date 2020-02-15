@@ -15,7 +15,8 @@ from email import encoders
 def main():
     description = """
     Send email(s). Add additionnal -file tags to send several attachments.
-    -user, -pwd, -smtp and -port flags are optionnal if a config file exists"""
+    -user, -pwd, -smtp and -port flags are optionnal if a config file exists.
+    To create a config file, type emails.py -config"""
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-user', help='username@domain.com')
     parser.add_argument('-pwd', help='password')
@@ -42,7 +43,9 @@ def main():
             port = args.port
         else:
             try:
-                user, pwd, smtp, port = get_auth_from_file(sys.path[0] + "/config.json")
+                user, pwd, smtp, port = get_auth_from_file(
+                    sys.path[0] + "/emails_config.json"
+                )
             except:
                 print('ERROR: provide -user, -pwd, -smtp and -port if --config is missing')
                 sys.exit(1)
@@ -59,7 +62,7 @@ def main():
                 print(e)
                 sys.exit(1)
             else:
-                print("done.")
+                print("Email sent.")
 
 def sendEmail(user, pwd, smtp, port, to, subject, text, attachment=[]):
     msg = MIMEMultipart()
@@ -105,14 +108,14 @@ def config():
     smtp = input("SMTP: ")
     port = input("port: ")
 
-    with open(sys.path[0] + "/config.json", mode="w", encoding="utf-8") as conf:
+    with open(sys.path[0] + "/emails_config.json", mode="w", encoding="utf-8") as conf:
         conf.write(json.dumps({
             "user": user,
             "password": password,
             "smtp": smtp,
             "port": port 
         }))
-    print(sys.path[0] + "/config.json")
+    print("Config file saved at", sys.path[0] + "/emails_config.json")
 
 if __name__ == '__main__':
     main()
